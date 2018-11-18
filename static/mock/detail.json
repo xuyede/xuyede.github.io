@@ -1,0 +1,77 @@
+{
+    "ret": true,
+    "data": {
+        "1001": {
+            "bannerData": {
+                "bannerImgUrl": "http://img1.qunarzz.com/sight/p0/1511/34/34170b200db08a5a90.img.jpg_600x330_9fee26e9.jpg",
+                "bannerTitle": "东莞松山湖",
+                "bannerImgNumber": "2",
+                "galleryImg": [
+                    "http://img1.qunarzz.com/sight/p0/1703/ef/efca9bb3e360348aa3.water.jpg_r_800x800_36a0fd76.jpg",
+                    "http://img1.qunarzz.com/sight/p0/1412/2c/c633c219335726cb27b33c887997b1fc.water.jpg_r_800x800_3ea3f1ec.jpg"
+                ]
+            },
+            "listData": [
+                {
+                    "title": "儿童票",
+                    "children": [
+                        {
+                            "title": "儿童票 - 来回",
+                            "children": [
+                                {
+                                    "title": "儿童票 - 退款"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "儿童票 - 单次"
+                        }
+                    ]
+                },
+                {
+                    "title": "成人票"
+                },
+                {
+                    "title": "学生票"
+                }
+            ],
+            "headerData" : "东莞松山湖"
+        },
+        "1002": {
+            "bannerData": {
+                "bannerImgUrl": "http://img1.qunarzz.com/sight/p0/1511/34/34170b200db08a5a90.img.jpg_600x330_9fee26e9.jpg",
+                "bannerTitle": "东莞万达广场",
+                "bannerImgNumber": "5",
+                "galleryImg": [
+                    "http://img1.qunarzz.com/sight/p0/1703/ef/efca9bb3e360348aa3.water.jpg_r_800x800_36a0fd76.jpg",
+                    "http://img1.qunarzz.com/sight/p0/1412/2c/c633c219335726cb27b33c887997b1fc.water.jpg_r_800x800_3ea3f1ec.jpg"
+                ]
+            },
+            "listData": [
+                {
+                    "title": "儿童票"
+                },
+                {
+                    "title": "成人票",
+                    "children": [
+                        {
+                            "title": "成人票 - 来回",
+                            "children": [
+                                {
+                                    "title": "成人票 - 退款"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "成人票 - 单次"
+                        }
+                    ]
+                },
+                {
+                    "title": "学生票"
+                }
+            ],
+            "headerData" : "东莞万达广场"
+        }
+    }
+}
