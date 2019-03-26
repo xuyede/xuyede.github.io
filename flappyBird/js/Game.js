@@ -21,8 +21,8 @@
         //获取图片资源
         getImage () {
             var imgObj = []
-            
-            fetch('../data/image.json')
+            // fetch('../data/image.json')
+            fetch('/flappyBird/data/image.json')
                 .then(resp => resp.json())
                 .then(res => {
                     imgObj = res.images
