@@ -22,13 +22,12 @@
 </ul>
 <p>首先 , 先天的<code class="language-text">[Symbol.iterator]</code>存在在一些特殊的数据结构中, 包括 <code class="language-text">Array</code> <code class="language-text">String</code> <code class="language-text">Map</code> <code class="language-text">Set</code> <code class="language-text">TypedArray</code> <code class="language-text">arguments</code> <code class="language-text">NodeList(dom)</code> <code class="language-text">GeneratorObject</code>等等, 如下图所示
 <br>
-<br>
-<a href="https://github.com/xuyede/blog_image/raw/master/2018/12/14/1.png"><img src="https://github.com/xuyede/blog_image/raw/master/2018/12/14/1.png"></a></p>
+<a href="http://119.23.54.204/static/xyd_image/2018/12/14/1.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/1.png"></a></p>
 <p>看到没, 就是这个东西, 在我说的那几个数据结构中都有, 不信的可以自己一个一个去试试</p>
 <p>但是, 不知道有没有发现, 我们最常用的 <code class="language-text">Object</code> 是没有 <code class="language-text">[Symbol.iterator]</code>接口的</p>
-<p><a href="https://github.com/xuyede/blog_image/raw/master/2018/12/14/2.png"><img src="https://github.com/xuyede/blog_image/raw/master/2018/12/14/2.png"></a></p>
+<p><a href="http://119.23.54.204/static/xyd_image/2018/12/14/2.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/2.png"></a></p>
 <p>所以 <code class="language-text">Object</code> 是不能使用 <code class="language-text">for...of</code> 进行遍历的</p>
-<p><a href="https://github.com/xuyede/blog_image/raw/master/2018/12/14/3.png"><img src="https://github.com/xuyede/blog_image/raw/master/2018/12/14/3.png"></a></p>
+<p><a href="http://119.23.54.204/static/xyd_image/2018/12/14/3.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/3.png"></a></p>
 <p>虽然 <code class="language-text">Object</code> 有很多方法可以遍历, 但是产品经理就要你用 <code class="language-text">for ... of</code> 遍历 <code class="language-text">Object</code> , 怎么办, 这就要说到后天的 <code class="language-text">[Symbol.iterator]</code></p>
 <div class="gatsby-highlight" data-language="javascript"><pre style="counter-reset: linenumber 0" class="language-javascript line-numbers"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -39,16 +38,16 @@
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <p><code class="language-text">Object</code> 不是没有 <code class="language-text">[Symbol.iterator]</code> 方法吗, 我们自己加一个不就行了</p>
-<p><a href="https://github.com/xuyede/blog_image/raw/master/2018/12/14/4.png"><img src="https://github.com/xuyede/blog_image/raw/master/2018/12/14/4.png"></a></p>
+<p><a href="http://119.23.54.204/static/xyd_image/2018/12/14/4.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/4.png"></a></p>
 <p>看 ! 现在 <code class="language-text">obj</code> 是可遍历的了 ( 这里的错误先不管, 后面会说到 )</p>
 <ul>
 <li>什么是 <code class="language-text">next</code></li>
 </ul>
 <p>上面说过 <code class="language-text">iterator</code> 从 <code class="language-text">[Symbol.iterator]</code> 开始, 通过 <code class="language-text">next</code> 按顺序输出数据, 所以, 我们来看一下从 <code class="language-text">[Symbol.iterator]</code> 出发后的是什么东西</p>
-<p><a href="https://github.com/xuyede/blog_image/raw/master/2018/12/14/5.png"><img src="https://github.com/xuyede/blog_image/raw/master/2018/12/14/5.png"></a></p>
+<p><a href="http://119.23.54.204/static/xyd_image/2018/12/14/5.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/5.png"></a></p>
 <p>可以很清楚的看到, <code class="language-text">[Symbol.iterator]</code> 执行后会返回一个包含 <code class="language-text">next</code> 方法的对象</p>
 <p>所以 , <code class="language-text">next</code> 就是由 <code class="language-text">[Symbol.iterator]</code> 执行后返回的一个方法, 下面我们来执行一下<code class="language-text">next</code></p>
-<p><a href="https://github.com/xuyede/blog_image/raw/master/2018/12/14/6.png"><img src="https://github.com/xuyede/blog_image/raw/master/2018/12/14/6.png"></a></p>
+<p><a href="http://119.23.54.204/static/xyd_image/2018/12/14/6.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/6.png"></a></p>
 <p>每次执行 <code class="language-text">next</code> 都会返回一个对象 <code class="language-text">{value: xxx, done: xxx}</code></p>
 <p><code class="language-text">value</code>为遍历的数据结构的每一位, <code class="language-text">done</code> 表示是否完成遍历</p>
 <p>现在我们可以完善一下上面的错误了</p>
@@ -70,7 +69,7 @@
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> val <span class="token keyword">of</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
-<p><a href="https://user-gold-cdn.xitu.io/2018/12/13/167a8453c7c3a882?w=615&#x26;h=380&#x26;f=png&#x26;s=13622"><img src="https://user-gold-cdn.xitu.io/2018/12/13/167a8453c7c3a882?w=615&#x26;h=380&#x26;f=png&#x26;s=13622"></a></p>
+<p><a href="http://119.23.54.204/static/xyd_image/2018/12/14/7.png"><img src="http://119.23.54.204/static/xyd_image/2018/12/14/7.png"></a></p>
 <p>ber ~ 这样对象就算没有 <code class="language-text">[Symbol.iterator]</code> 接口也可以使用 <code class="language-text">for ... of</code> 去遍历了</p>
 <hr>
 <ul>
